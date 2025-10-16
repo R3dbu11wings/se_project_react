@@ -4,10 +4,13 @@
   margin: 0;
 }
 
-.footer__name {
+.footer__content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.footer__name {
   font-family: Cabinet Grotesk;
   font-weight: 500;
   font-size: 16px;

@@ -1,8 +1,17 @@
-# React + Vite
+Project name:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+se_projects_react
 
-Currently, two official plugins are available:
+Description:
+Weather Api with responsive design.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Tech stack:
+React + vite
+
+Screenshot:
+![alt text](react1.png)
+![alt text](react2.png)
+![alt text](react3.png)
+
+Demo Link:
+https://github.com/R3dbu11wings/se_project_react
