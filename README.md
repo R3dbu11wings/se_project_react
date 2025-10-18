@@ -14,4 +14,4 @@ Screenshot:
 ![alt text](react3.png)
 
 Demo Link:
-https://github.com/R3dbu11wings/se_project_react
+https://r3dbu11wings.github.io/se_project_react/
