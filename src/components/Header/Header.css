@@ -34,3 +34,9 @@
   margin: 0;
   line-height: 1;
 }
+
+.header__nav-link {
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
