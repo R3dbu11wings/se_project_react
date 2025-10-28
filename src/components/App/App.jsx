@@ -11,7 +11,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../contexts/currentTemperatureUnitContext";
-import { getItems } from "../../utils/api";
+import { addItem, getItems, deleteItem } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -37,19 +37,27 @@ function App() {
     setActiveModal("add-garment");
   };
 
-  const onAddItem = (inputValues) => {
-    // call fetch
-    // .then()... all goes in .then
-    //.catch
-    // dont use newCardData (id included in response data)
+  const handleDeleteItem = (id) => {
+    deleteItem({ itemID: id })
+      .then(() => {
+        setClothingItems(clothingItems.filter((item) => item._id !== id));
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
 
+  const onAddItem = (inputValues) => {
     const newCardData = {
       name: inputValues.name,
-      link: inputValues.link,
+      imageUrl: inputValues.imageUrl,
       weather: inputValues.weatherType,
     };
-    setClothingItems([...clothingItems, newCardData]);
-    closeActiveModal();
+
+    addItem(newCardData)
+      .then((data) => {
+        setClothingItems([data, ...clothingItems]);
+      })
+      .catch(console.error);
   };
 
   const closeActiveModal = () => {
@@ -95,6 +103,7 @@ function App() {
                 <Profile
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  onDeleteItem={handleDeleteItem}
                 />
               }
             />
@@ -110,6 +119,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
+          onDelete={handleDeleteItem}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

@@ -1,5 +1,31 @@
+.clothes-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .clothes-section__row {
   display: flex;
+  margin-left: 116px;
+  margin-bottom: 16px;
+  align-items: center;
+  padding-top: 31px;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+}
+.clothes-section__row_text {
+  display: flex;
+  margin: 0;
+  padding-right: 20px;
+  color: #000000;
+}
+
+.clothes-section__row_btn {
+  border: none;
+  padding: 0;
+  color: #00000099;
+  cursor: pointer;
 }
 
 .clothes-section__items {
@@ -8,4 +34,5 @@
   margin: 0;
   padding: 0;
   gap: 21px;
+  justify-content: flex-end;
 }

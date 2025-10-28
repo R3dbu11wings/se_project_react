@@ -2,7 +2,7 @@ import "./ModalWithForm.css";
 
 function ModalWithForm({
   children,
-  buttonText = "Save",
+  buttonText = "Add garment",
   title,
   name,
   isOpen,
