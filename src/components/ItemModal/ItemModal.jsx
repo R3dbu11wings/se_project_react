@@ -5,8 +5,17 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
     onDelete(card._id);
   };
 
+  const handleCloseClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
+    <div
+      className={`modal ${activeModal === "preview" && "modal_opened"}`}
+      onClick={handleCloseClick}
+    >
       <div className="modal__content modal__content_type_image">
         <button
           onClick={onClose}
