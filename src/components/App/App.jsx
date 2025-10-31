@@ -10,7 +10,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import CurrentTemperatureUnitContext from "../contexts/currentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../../utils/contexts/currentTemperatureUnitContext";
 import { addItem, getItems, deleteItem } from "../../utils/api";
 
 function App() {
