@@ -6,8 +6,8 @@ export const weatherOptions = [
   },
   {
     day: true,
-    condition: "cloudy",
-    url: new URL("../assets/day/daycloudy.png", import.meta.url).href,
+    condition: "clouds",
+    url: new URL("../assets/day/dayclouds.png", import.meta.url).href,
   },
   {
     day: true,
@@ -26,7 +26,7 @@ export const weatherOptions = [
   },
   {
     day: true,
-    condition: "storm",
+    condition: "thunderstorm",
     url: new URL("../assets/day/daystorm.png", import.meta.url).href,
   },
 
@@ -37,8 +37,8 @@ export const weatherOptions = [
   },
   {
     day: false,
-    condition: "cloudy",
-    url: new URL("../assets/night/nightcloudy.png", import.meta.url).href,
+    condition: "clouds",
+    url: new URL("../assets/night/nightclouds.png", import.meta.url).href,
   },
   {
     day: false,
@@ -57,7 +57,7 @@ export const weatherOptions = [
   },
   {
     day: false,
-    condition: "storm",
+    condition: "thunderstorm",
     url: new URL("../assets/night/nightstorm.png", import.meta.url).href,
   },
 ];
@@ -76,4 +76,4 @@ export const coordinates = {
   longitude: -86.525229,
 };
 
-export const APIkey = "d2b8ebf70cb227f66408cff615f4ccde";
+export const apiKey = "d2b8ebf70cb227f66408cff615f4ccde";

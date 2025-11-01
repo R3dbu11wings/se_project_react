@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
-import { coordinates, APIkey } from "../../utils/constants";
+import { coordinates, apiKey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -46,7 +46,7 @@ function App() {
       .catch(console.error);
   };
 
-  const onAddItem = (inputValues) => {
+  const handleAddItem = (inputValues) => {
     const newCardData = {
       name: inputValues.name,
       imageUrl: inputValues.imageUrl,
@@ -66,7 +66,7 @@ function App() {
   };
 
   useEffect(() => {
-    getWeather(coordinates, APIkey)
+    getWeather(coordinates, apiKey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
@@ -118,6 +118,7 @@ function App() {
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
                   onDeleteItem={handleDeleteItem}
+                  onAddItemClick={handleAddClick}
                 />
               }
             />
@@ -127,7 +128,7 @@ function App() {
         <AddItemModal
           isOpen={activeModal === "add-garment"}
           onClose={closeActiveModal}
-          onAddItem={onAddItem}
+          handleAddItem={handleAddItem}
         />
         <ItemModal
           activeModal={activeModal}
