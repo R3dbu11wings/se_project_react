@@ -52,13 +52,16 @@ function App() {
       imageUrl: inputValues.imageUrl,
       weather: inputValues.weatherType,
     };
-
-    addItem(newCardData)
+    return addItem(newCardData)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
         closeActiveModal();
+        return data;
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error(err);
+        return Promise.reject(err);
+      });
   };
 
   const closeActiveModal = () => {
