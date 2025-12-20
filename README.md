@@ -24,3 +24,7 @@ https://r3dbu11wings.github.io/se_project_react/
 
 Check out [this video](https://drive.google.com/file/d/19Bb9Ev2WFMKI5NG3sSQDLzG3fmY6wVLk/view?usp=drive_link), where I describe my
 project and some challenges I faced while building it.
+
+## Backend
+
+https://github.com/R3dbu11wings/se_project_express.git
