@@ -12,6 +12,7 @@ import Profile from "../Profile/Profile";
 import LoginModal from "../LoginModal/Loginmodal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../utils/contexts/currentTemperatureUnitContext";
 import CurrentUserContext from "../../utils/contexts/currentUserContext";
@@ -21,6 +22,7 @@ import {
   deleteItem,
   likeItem,
   dislikeItem,
+  updateProfile,
 } from "../../utils/api";
 import { register, login, checkToken } from "../../utils/auth";
 
@@ -67,16 +69,24 @@ function App() {
       .catch(console.error);
   };
 
-  const handleCardLike = (id, isLiked) => {
-    const apiCall = isLiked ? dislikeItem : likeItem;
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
 
-    apiCall(id)
-      .then((updatedCard) => {
-        setClothingItems((items) =>
-          items.map((item) => (item._id === id ? updatedCard.data : item))
-        );
-      })
-      .catch((err) => console.error("Error updating like:", err));
+    !isLiked
+      ? likeItem(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard.data : item))
+            );
+          })
+          .catch((err) => console.log(err))
+      : dislikeItem(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard.data : item))
+            );
+          })
+          .catch((err) => console.log(err));
   };
 
   const handleAddItem = (inputValues) => {
@@ -140,6 +150,22 @@ function App() {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
     setCurrentUser(null);
+  };
+
+  const handleEditProfileClick = () => {
+    setActiveModal("edit-profile");
+  };
+
+  const handleUpdateUser = (userData) => {
+    return updateProfile(userData)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        closeActiveModal();
+      })
+      .catch((err) => {
+        console.error("Error updating profile", err);
+        return Promise.reject(err);
+      });
   };
 
   const closeActiveModal = () => {
@@ -223,9 +249,9 @@ function App() {
                       clothingItems={clothingItems}
                       onDeleteItem={handleDeleteItem}
                       onAddItemClick={handleAddClick}
-                      currentUser={currentUser}
                       onLogout={handleLogout}
                       onCardLike={handleCardLike}
+                      onEditProfile={handleEditProfileClick}
                     />
                   </ProtectedRoute>
                 }
@@ -253,6 +279,11 @@ function App() {
             isOpen={activeModal === "register"}
             onClose={closeActiveModal}
             handleRegister={handleRegister}
+          />
+          <EditProfileModal
+            isOpen={activeModal === "edit-profile"}
+            onClose={closeActiveModal}
+            onUpdateUser={handleUpdateUser}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>

@@ -14,7 +14,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
   const handleLike = (e) => {
     e.stopPropagation();
     if (onCardLike) {
-      onCardLike(item._id, isLiked);
+      onCardLike({ id: item._id, isLiked });
     }
   };
 
