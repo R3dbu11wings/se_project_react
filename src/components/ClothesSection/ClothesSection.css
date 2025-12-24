@@ -36,3 +36,12 @@
   gap: 21px;
   justify-content: flex-end;
 }
+
+.clothes-section__empty {
+  font-family: Cabinet Grotesk;
+  font-weight: 500;
+  font-size: 18px;
+  color: #00000099;
+  margin: 20px 0;
+  grid-column: 1 / -1;
+}

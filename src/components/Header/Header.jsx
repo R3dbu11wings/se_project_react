@@ -16,7 +16,6 @@ function Header({
     day: "numeric",
   });
 
-  // Get first letter of user's name for placeholder
   const userInitial = currentUser?.name?.charAt(0).toUpperCase() || "";
 
   return (

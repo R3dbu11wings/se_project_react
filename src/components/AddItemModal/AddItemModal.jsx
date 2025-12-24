@@ -13,23 +13,20 @@ const AddItemModal = ({ isOpen, handleAddItem, onClose }) => {
 
   useEffect(() => {
     if (isOpen) {
-      // reset to defaults and clear errors when modal opens
       resetForm(defaultValues);
     }
   }, [isOpen, resetForm]);
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    // prevent submission if the form is invalid
+
     if (!isValid) return;
 
     const maybePromise = handleAddItem(values);
 
-    // If the parent returns a promise, reset the form after success.
     if (maybePromise && typeof maybePromise.then === "function") {
       maybePromise.then(() => resetForm(defaultValues)).catch(() => {});
     } else {
-      // best-effort reset when parent does not return a promise
       resetForm(defaultValues);
     }
   }
