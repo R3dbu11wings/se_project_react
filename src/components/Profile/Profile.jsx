@@ -8,6 +8,7 @@ export default function Profile({
   onDeleteItem,
   onAddItemClick,
   onLogout,
+  onCardLike,
 }) {
   return (
     <section className="profile">
@@ -17,6 +18,7 @@ export default function Profile({
         clothingItems={clothingItems}
         onDeleteItem={onDeleteItem}
         onAddItemClick={onAddItemClick}
+        onCardLike={onCardLike}
       />
     </section>
   );

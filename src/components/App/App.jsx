@@ -15,7 +15,13 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../utils/contexts/currentTemperatureUnitContext";
 import CurrentUserContext from "../../utils/contexts/currentUserContext";
-import { addItem, getItems, deleteItem } from "../../utils/api";
+import {
+  addItem,
+  getItems,
+  deleteItem,
+  likeItem,
+  dislikeItem,
+} from "../../utils/api";
 import { register, login, checkToken } from "../../utils/auth";
 
 function App() {
@@ -59,6 +65,18 @@ function App() {
         closeActiveModal();
       })
       .catch(console.error);
+  };
+
+  const handleCardLike = (id, isLiked) => {
+    const apiCall = isLiked ? dislikeItem : likeItem;
+
+    apiCall(id)
+      .then((updatedCard) => {
+        setClothingItems((items) =>
+          items.map((item) => (item._id === id ? updatedCard.data : item))
+        );
+      })
+      .catch((err) => console.error("Error updating like:", err));
   };
 
   const handleAddItem = (inputValues) => {
@@ -192,6 +210,7 @@ function App() {
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
+                    onCardLike={handleCardLike}
                   />
                 }
               />
@@ -206,6 +225,7 @@ function App() {
                       onAddItemClick={handleAddClick}
                       currentUser={currentUser}
                       onLogout={handleLogout}
+                      onCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }

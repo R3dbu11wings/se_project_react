@@ -27,6 +27,7 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
           onClick={onClose}
           type="button"
           className="modal__close modal__close_image"
+          aria-label="Close modal"
         ></button>
         <img src={card.imageUrl} alt={card.name} className="modal__image" />
         <div className="modal__footer">
