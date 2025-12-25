@@ -8,8 +8,6 @@
 .card__header {
   position: absolute;
   top: 15px;
-  left: 0;
-  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,44 +16,39 @@
 }
 
 .card__name {
-  top: 15px;
   margin: 0;
   background: #ffffff;
   border-radius: 4px;
-  width: 73px;
+  width: 100%;
+  min-width: 73px;
   height: 24px;
   text-align: center;
   font-family: Cabinet Grotesk;
   font-weight: 700;
-  font-style: Bold;
   font-size: 16px;
   line-height: 20px;
   color: #00000099;
 }
 
 .card__like-btn {
-  background: #ffffff;
-  border: 1px solid #00000033;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  background: transparent;
+  border: none;
+  width: 18px;
+  height: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 18px;
   transition: all 0.3s ease;
   padding: 0;
 }
 
 .card__like-btn:hover {
   transform: scale(1.1);
-  border-color: #ff0000;
 }
 
-.card__like-btn_active {
-  color: #ff0000;
-  border-color: #ff0000;
+.card__like-icon {
+  padding-left: 10px;
 }
 
 .card__image {

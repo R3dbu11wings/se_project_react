@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import "./ItemCard.css";
 import CurrentUserContext from "../../utils/contexts/currentUserContext";
+import heartOutlined from "../../assets/outlineheart.svg";
+import heartFilled from "../../assets/filledheart.svg";
 
 function ItemCard({ item, onCardClick, onCardLike }) {
   const { currentUser } = useContext(CurrentUserContext);
@@ -30,7 +32,13 @@ function ItemCard({ item, onCardClick, onCardLike }) {
             }`}
             aria-label={isLiked ? "Unlike item" : "Like item"}
             type="button"
-          ></button>
+          >
+            <img
+              src={isLiked ? heartFilled : heartOutlined}
+              alt="like"
+              className="card__like-icon"
+            />
+          </button>
         )}
       </div>
       <img

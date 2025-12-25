@@ -8,12 +8,12 @@ export default function SideBar({ onLogout, onEditProfile }) {
   return (
     <aside className="sidebar">
       <div className="sidebar__profile">
-        <p className="sidebar__user-name">{currentUser?.name}</p>
         <img
           src={currentUser?.avatar || avatar}
           alt="user avatar"
           className="sidebar__avatar"
         />
+        <p className="sidebar__user-name">{currentUser?.name}</p>
       </div>
       <button
         onClick={onEditProfile}
