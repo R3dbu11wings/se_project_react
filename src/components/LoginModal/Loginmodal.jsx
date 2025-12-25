@@ -8,7 +8,7 @@ const LoginModal = ({ isOpen, handleLogin, onClose }) => {
     password: "",
   };
 
-  const { values, setValues, handleChange, errors, isValid, resetForm } =
+  const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation(defaultValues);
 
   useEffect(() => {

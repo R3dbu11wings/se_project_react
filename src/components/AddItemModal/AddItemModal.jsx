@@ -8,7 +8,7 @@ const AddItemModal = ({ isOpen, handleAddItem, onClose }) => {
     imageUrl: "",
     weatherType: "",
   };
-  const { values, setValues, handleChange, errors, isValid, resetForm } =
+  const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation(defaultValues);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const AddItemModal = ({ isOpen, handleAddItem, onClose }) => {
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="clothing-name" className="modal__label">
         Name{" "}
         <input
           type="text"

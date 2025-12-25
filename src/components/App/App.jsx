@@ -159,7 +159,7 @@ function App() {
   const handleUpdateUser = (userData) => {
     return updateProfile(userData)
       .then((updatedUser) => {
-        setCurrentUser(updatedUser);
+        setCurrentUser((prev) => ({ ...prev, ...updatedUser }));
         closeActiveModal();
       })
       .catch((err) => {

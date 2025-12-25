@@ -10,7 +10,7 @@ const RegisterModal = ({ isOpen, handleRegister, onClose }) => {
     avatar: "",
   };
 
-  const { values, setValues, handleChange, errors, isValid, resetForm } =
+  const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation(defaultValues);
 
   useEffect(() => {
@@ -98,7 +98,6 @@ const RegisterModal = ({ isOpen, handleRegister, onClose }) => {
           placeholder="Avatar URL"
           value={values.avatar}
           onChange={handleChange}
-          required
         />
         {errors.avatar && <span className="modal__error">{errors.avatar}</span>}
       </label>
