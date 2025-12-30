@@ -226,7 +226,6 @@ function App() {
               isLoggedIn={isLoggedIn}
               onLoginClick={handleLoginClick}
               onRegisterClick={handleRegisterClick}
-              currentUser={currentUser}
             />
             <Routes>
               <Route
@@ -274,11 +273,13 @@ function App() {
             isOpen={activeModal === "login"}
             onClose={closeActiveModal}
             handleLogin={handleLogin}
+            onRegisterClick={handleRegisterClick}
           />
           <RegisterModal
             isOpen={activeModal === "register"}
             onClose={closeActiveModal}
             handleRegister={handleRegister}
+            onLoginClick={handleLoginClick}
           />
           <EditProfileModal
             isOpen={activeModal === "edit-profile"}

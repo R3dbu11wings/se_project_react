@@ -8,6 +8,9 @@ function ModalWithForm({
   isOpen,
   onClose,
   onSubmit,
+  redirectText,
+  redirectLinkText,
+  onRedirectClick,
 }) {
   const handleCloseClick = (e) => {
     if (e.target === e.currentTarget) {
@@ -26,12 +29,28 @@ function ModalWithForm({
           onClick={onClose}
           type="button"
           className="modal__close"
+          aria-label="Close modal"
         ></button>
         <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <button type="submit" className="modal__submit">
-            {buttonText}
-          </button>
+          <div className="modal__container">
+            <button type="submit" className="modal__submit">
+              {buttonText}
+            </button>
+            {redirectText && (
+              <p className="modal__redirect">
+                {redirectText}
+                {""}
+                <button
+                  type="button"
+                  className="modal__redirect-link"
+                  onClick={onRedirectClick}
+                >
+                  {redirectLinkText}
+                </button>
+              </p>
+            )}
+          </div>
         </form>
       </div>
     </div>

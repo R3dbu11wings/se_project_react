@@ -2,7 +2,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 import { useEffect } from "react";
 
-const LoginModal = ({ isOpen, handleLogin, onClose }) => {
+const LoginModal = ({ isOpen, handleLogin, onClose, onRegisterClick }) => {
   const defaultValues = {
     email: "",
     password: "",
@@ -38,6 +38,9 @@ const LoginModal = ({ isOpen, handleLogin, onClose }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      redirectText="or "
+      redirectLinkText="Register"
+      onRedirectClick={onRegisterClick}
     >
       <label htmlFor="login-email" className="modal__label">
         Email{" "}

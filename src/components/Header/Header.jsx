@@ -2,6 +2,8 @@ import "./Header.css";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { useContext } from "react";
+import CurrentUserContext from "../../utils/contexts/currentUserContext";
 
 function Header({
   handleAddClick,
@@ -9,8 +11,9 @@ function Header({
   isLoggedIn,
   onLoginClick,
   onRegisterClick,
-  currentUser,
 }) {
+  const { currentUser } = useContext(CurrentUserContext);
+
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",

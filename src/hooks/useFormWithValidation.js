@@ -11,10 +11,12 @@ export function useFormWithValidation(defaultValues = {}) {
     setValues((v) => ({ ...v, [name]: value }));
     setErrors((e) => ({ ...e, [name]: validationMessage }));
 
-    // determine form validity via the HTMLFormElement checkValidity
     const currentForm = form || evt.target.closest("form");
     if (currentForm) setIsValid(currentForm.checkValidity());
-    else setIsValid(!Object.values({ ...errors, [name]: validationMessage }).some(Boolean));
+    else
+      setIsValid(
+        !Object.values({ ...errors, [name]: validationMessage }).some(Boolean)
+      );
   };
 
   const resetForm = useCallback(
@@ -26,7 +28,15 @@ export function useFormWithValidation(defaultValues = {}) {
     [setValues, setErrors, setIsValid]
   );
 
-  return { values, setValues, errors, isValid, handleChange, resetForm, setErrors };
+  return {
+    values,
+    setValues,
+    errors,
+    isValid,
+    handleChange,
+    resetForm,
+    setErrors,
+  };
 }
 
 export default useFormWithValidation;
