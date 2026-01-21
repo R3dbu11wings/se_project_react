@@ -1,4 +1,4 @@
-export const weatherOptions = [
+const weatherOptions = [
   {
     day: true,
     condition: "clear",
@@ -62,7 +62,7 @@ export const weatherOptions = [
   },
 ];
 
-export const defaultWeatherOptions = {
+const defaultWeatherOptions = {
   day: {
     url: new URL("../assets/day/daydefault.png", import.meta.url).href,
   },
@@ -71,9 +71,16 @@ export const defaultWeatherOptions = {
   },
 };
 
-export const coordinates = {
+const coordinates = {
   latitude: 33.696923,
   longitude: -86.525229,
 };
 
-export const apiKey = "d2b8ebf70cb227f66408cff615f4ccde";
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.coldhotweather.servernux.com"
+    : "http://localhost:3001";
+
+const apiKey = "d2b8ebf70cb227f66408cff615f4ccde";
+
+export { weatherOptions, defaultWeatherOptions, coordinates, baseUrl, apiKey };
